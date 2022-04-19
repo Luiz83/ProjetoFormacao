@@ -43,6 +43,7 @@ namespace ProjetoFormacao.Models
         public double ExibirMedia(double provaSemestralUm, double provaSemestralDois)
         {
             var media = 0.0;
+            media = CalcularMediaBasica(provaSemestralUm, provaSemestralDois) * 0.5;
             return media;
         }
 
@@ -50,6 +51,8 @@ namespace ProjetoFormacao.Models
                                   double trabalhoSemestralDois)
         {
             var media = 0.0;
+            media = ((CalcularMediaBasica(provaSemestralUm, provaSemestralDois) * 0.5) +
+                    (CalcularMediaBasica(trabalhoSemestralUm, trabalhoSemestralDois) * 0.2));
             return media;
         }
 
@@ -57,7 +60,17 @@ namespace ProjetoFormacao.Models
                                   double trabalhoSemestralDois, double provaMensalUm, double provaMensalDois)
         {
             var media = 0.0;
+            media = ((CalcularMediaBasica(provaSemestralUm, provaSemestralDois) * 0.5) +
+                    (CalcularMediaBasica(trabalhoSemestralUm, trabalhoSemestralDois) * 0.2) +
+                    (CalcularMediaBasica(provaMensalUm, provaMensalDois) * 0.3));
             return media;
+        }
+
+        public double CalcularMediaBasica(double valorUm, double valorDois)
+        {
+            var mediaBasica = 0.0;
+            mediaBasica = (valorUm + valorDois) / 2;
+            return mediaBasica;
         }
 
         public virtual void DefinirDuracao()

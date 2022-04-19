@@ -15,12 +15,14 @@ namespace ProjetoFormacao.Models
 
         public override void DefinirDuracao()
         {
-
+            SetDuracao(36);
         }
 
         public override void CalcularMensalidade()
         {
-
+            var mensalidade = 0.0;
+            mensalidade = GetDuracao() * 3 * 7;
+            SetMensalidade(mensalidade);
         }
     }
 }

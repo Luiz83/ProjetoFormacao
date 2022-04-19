@@ -24,12 +24,23 @@ namespace ProjetoFormacao.Models
 
         public override void DefinirDuracao()
         {
-
+            string engenharia = "engenharia";
+            bool CursaEngenahria = GetDescricao().Contains(engenharia);
+            if (CursaEngenahria)
+            {
+                SetDuracao(60);
+            }
+            else
+            {
+                SetDuracao(48);
+            }
         }
 
         public override void CalcularMensalidade()
         {
-
+            var mensalidade = 0.0;
+            mensalidade = (GetDuracao() * 3 * 8) + (GetCargaHorarioEstagio() * 12);
+            SetMensalidade(mensalidade);
         }
     }
 }
