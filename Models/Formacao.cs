@@ -7,6 +7,13 @@ namespace ProjetoFormacao.Models
         private double Mensalidade { get; set; }
         private int Duracao { get; set; }
 
+        public Formacao(string descricao, int periodo){
+            SetDescricao(descricao);
+            SetPeriodo(periodo);
+            DefinirDuracao();
+            CalcularMensalidade();
+        }
+
         public void SetDescricao(string descricao)
         {
             Descricao = descricao;

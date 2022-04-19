@@ -5,6 +5,14 @@ namespace ProjetoFormacao.Models
         private string ProjetoConclusao { get; set; }
         private int CargaHorarioEstagio { get; set; }
 
+        public Bacharelado(string descricao, int periodo, string projetoConclusao, int cargaHorarioEstagio) : base(descricao, periodo)
+        {
+            SetCargaHorarioEstagio(cargaHorarioEstagio);
+            SetProjetoConclusao(projetoConclusao);
+            DefinirDuracao();
+            CalcularMensalidade();
+        }
+
         public void SetProjetoConclusao(string projetoConclusao)
         {
             ProjetoConclusao = projetoConclusao;
@@ -39,7 +47,7 @@ namespace ProjetoFormacao.Models
         public override void CalcularMensalidade()
         {
             var mensalidade = 0.0;
-            mensalidade = (GetDuracao() * 3 * 8) + (GetCargaHorarioEstagio() * 12);
+            mensalidade = (GetDuracao() * GetPeriodo() * 8) + (GetCargaHorarioEstagio() * 12);
             SetMensalidade(mensalidade);
         }
     }

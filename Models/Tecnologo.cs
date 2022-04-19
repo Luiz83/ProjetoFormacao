@@ -4,6 +4,11 @@ namespace ProjetoFormacao.Models
     {
         private bool PlanoEstendido { get; set; }
 
+        public Tecnologo(string descricao, int periodo, bool planoEstendido) : base(descricao, periodo)
+        {
+            SetPlanoEstendido(planoEstendido); ;
+        }
+
         public void SetPlanoEstendido(bool planoEstendido)
         {
             PlanoEstendido = planoEstendido;
@@ -21,7 +26,7 @@ namespace ProjetoFormacao.Models
         public override void CalcularMensalidade()
         {
             var mensalidade = 0.0;
-            mensalidade = GetDuracao() * 3 * 8;
+            mensalidade = GetDuracao() * GetPeriodo() * 8;
             SetMensalidade(mensalidade);
         }
     }

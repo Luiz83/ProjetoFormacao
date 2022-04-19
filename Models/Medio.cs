@@ -4,6 +4,11 @@ namespace ProjetoFormacao.Models
     {
         private string Tipo { get; set; }
 
+        public Medio(string descricao, int periodo, string tipo) : base(descricao, periodo)
+        {
+            SetTipo(tipo);
+        }
+
         public void SetTipo(string tipo)
         {
             Tipo = tipo;
@@ -21,7 +26,7 @@ namespace ProjetoFormacao.Models
         public override void CalcularMensalidade()
         {
             var mensalidade = 0.0;
-            mensalidade = GetDuracao() * 3 * 7;
+            mensalidade = GetDuracao() * GetPeriodo() * 7;
             SetMensalidade(mensalidade);
         }
     }
